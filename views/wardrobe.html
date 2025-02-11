@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="../public/images/LookLabHeader.png" alt="LookLab Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- Wardrobe Categories -->
+    <div class="home-container wardrobe-toolbar">
+        <button class="home-button" onclick="showCategory('tops')"><span>Tops</span></button>
+        <button class="home-button" onclick="showCategory('trousers')"><span>Trousers</span></button>
+        <button class="home-button" onclick="showCategory('skirts')"><span>Skirts</span></button>
+        <button class="home-button" onclick="showCategory('dresses')"><span>Dresses</span></button>
+        <button class="home-button" onclick="showCategory('jackets')"><span>Jackets</span></button>
+        <button class="home-button" onclick="showCategory('shoes')"><span>Shoes</span></button>
+        <button class="home-button" onclick="showCategory('accessories')"><span>Accessories</span></button>
+    </div>
+
+    <!-- Category Display -->
+    <div id="category-container" class="category-container">
+        <div id="category-content" class="category-content"></div>
+    </div>
+
+    <!-- Plus Button -->
+    <button id="addItemBtn" class="add-item-btn" onclick="openForm()">+</button>
+
+    <!-- Upload Form (Hidden by Default) -->
+    <div id="uploadForm" class="form-popup">
+        <form id="itemForm" class="form-container">
+            <h2>Add New Item</h2>
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="tops">Tops</option>
+                <option value="trousers">Trousers</option>
+                <option value="skirts">Skirts</option>
+                <option value="dresses">Dresses</option>
+                <option value="jackets">Jackets</option>
+                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option>
+            </select>
+            
+            <label for="itemImage">Upload Image:</label>
+            <input type="file" id="itemImage" accept="image/*">
+
+            <button type="button" onclick="addItem()">Add Item</button>
+            <button type="button" onclick="closeForm()">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="home-btn">🏠</a>
+
+    <script src="../public/scripts.js"></script>
+</body>
+</html>

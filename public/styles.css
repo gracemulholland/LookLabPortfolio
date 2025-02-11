@@ -1,0 +1,291 @@
+/* General Styles */
+body {
+    font-family: 'Jacques Francois', serif;
+    background-color: #F5E6E8;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Ensures correct positioning */
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #D5C6E0;
+}
+
+.logo {
+    max-width: 250px;
+}
+
+/* Buttons */
+.home-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.wardrobe-toolbar {
+    display: flex;
+    justify-content: center;
+    background-color: #AAA1C8; /* Add background color */
+    border-radius: 10px; /* Add border-radius */
+    padding: 15px; /* Add padding */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Add box-shadow */
+}
+
+/* Active Category Button */
+.home-button:active {
+    transform: scale(0.95);
+    background-color: #C8B8E0; /* Slightly darker on click */
+}
+
+.home-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Jacques Francois', serif;
+    font-size: 1.2rem;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.home-button span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.home-button:hover {
+    background-color: #D5C6E0;
+}
+
+/* Home Button (Bottom Left) */
+.home-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Places it in bottom-left */
+    background-color: #AAA1C8;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background-color: #8F85B5;
+}
+
+/* Plus Button (Bottom Right) */
+.add-item-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #AAA1C8;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Back Button (if needed elsewhere) */
+.back-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-family: 'Jacques Francois', serif;
+    font-size: 1rem;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #D5C6E0;
+}
+
+/* Category Content */
+.category-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 15px;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.category-item {
+    background: #FFF;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+    transform: scale(1.05);
+}
+
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Empty message styles */
+.empty-message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.empty-message {
+    font-size: 1.2em;
+    color: #666;
+}
+
+
+/* Form Popup */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #CCC;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .home-button {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .home-button span {
+        font-size: 0.9rem;
+    }
+
+    .category-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-button {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .home-button span {
+        font-size: 0.8rem;
+    }
+
+    .category-content {
+        width: 95%;
+    }
+}
+
+/* Styling for images */
+.item {
+    position: relative;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    max-width: 150px; /* Ensures items fit inside the grid */
+    text-align: center;
+}
+
+/* Ensure images fit properly */
+.item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    max-height: 200px; /* Prevents oversized images */
+    object-fit: contain;
+}
+
+/* Delete Button (Initially hidden) */
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+/* Show the delete button only when the item is hovered */
+.item:hover .delete-btn {
+    display: flex;
+    opacity: 1;
+}
