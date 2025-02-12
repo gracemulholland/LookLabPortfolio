@@ -1,3 +1,12 @@
+// Ensure the DOM is fully loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener to the plus button
+    const addButton = document.getElementById('addItemButton');
+    if (addButton) {
+        addButton.addEventListener('click', openForm);
+    }
+});
+
 function showCategory(category) {
     const categoryContent = document.getElementById('category-content');
     categoryContent.innerHTML = ''; // Clear previous content
@@ -10,11 +19,12 @@ function showCategory(category) {
     } else {
         items.forEach((item, index) => {
             const itemElement = document.createElement('div');
-            itemElement.className = 'item';
+            itemElement.className = 'category-item'; // Ensure this class is used for grid layout
             itemElement.innerHTML = `
                 <img src="${item.image}" alt="Uploaded Item">
-                <button class="delete-btn" onclick="deleteItem('${category}', ${index}')">×</button>
+                <button class="delete-btn" onclick="deleteItem('${category}', ${index})">×</button>
             `;
+
             categoryContent.appendChild(itemElement);
         });
     }
@@ -42,16 +52,26 @@ function addItem() {
 
 // Delete function
 function deleteItem(category, index) {
+    console.log('Delete button clicked'); // Debugging
     let items = JSON.parse(localStorage.getItem(category)) || [];
-    items.splice(index, 1); // Remove the selected item
+    
+    // Remove item at index
+    items.splice(index, 1);
+
+    // Save updated array back to local storage
     localStorage.setItem(category, JSON.stringify(items));
-    showCategory(category); // Refresh category view
+
+    // Refresh the display
+    showCategory(category);
 }
 
+// Function to open the upload form
 function openForm() {
-    document.getElementById('uploadForm').style.display = 'block';
+    console.log('Button clicked!');  // Debugging
+    document.getElementById("uploadForm").style.display = "block";
 }
 
+// Function to close the upload form
 function closeForm() {
-    document.getElementById('uploadForm').style.display = 'none';
+    document.getElementById("uploadForm").style.display = "none";
 }

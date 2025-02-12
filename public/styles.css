@@ -103,7 +103,7 @@ body {
     right: 20px;
     background-color: #AAA1C8;
     color: white;
-    font-size: 24px;
+    font-size: 30px;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -113,50 +113,41 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100; /* Ensures it's always above other elements */
 }
 
-/* Back Button (if needed elsewhere) */
-.back-button {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    font-family: 'Jacques Francois', serif;
-    font-size: 1rem;
-    color: #333;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #D5C6E0;
+.add-item-btn:active {
+    transform: scale(0.95);
+    background-color: #C8B8E0; /* Slightly darker on click */
 }
 
 /* Category Content */
 .category-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ensure grid format */
     gap: 15px;
-    justify-content: center;
+    justify-content: start; /* Align items to the left */
     align-items: start;
     padding: 20px;
+    height: auto;
+    min-height: 200px;
 }
 
 .category-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100%;
 }
 
 .category-item {
-    background: #FFF;
+    background: none; /* Remove white background */
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure delete button is positioned correctly */
 }
 
 .category-item:hover {
@@ -167,23 +158,44 @@ body {
     width: 100%;
     height: auto;
     border-radius: 5px;
+    object-fit: cover; /* Ensure images cover the grid item area */
+}
+
+/* Delete Button (Initially hidden) */
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* Show the delete button only when the item is hovered */
+.item:hover .delete-btn {
+    display: flex;
+    opacity: 1;
 }
 
 /* Empty message styles */
 .empty-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
+    width: max-content; /* Prevent it from spanning the whole screen */
+    height: auto;
+    z-index: 1;
+    pointer-events: none; /* Stops it from blocking interactions */
 }
-
-.empty-message {
-    font-size: 1.2em;
-    color: #666;
-}
-
 
 /* Form Popup */
 .form-popup {
@@ -245,47 +257,26 @@ body {
 
 /* Styling for images */
 .item {
-    position: relative;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    max-width: 150px; /* Ensures items fit inside the grid */
-    text-align: center;
-}
-
-/* Ensure images fit properly */
-.item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    max-height: 200px; /* Prevents oversized images */
-    object-fit: contain;
-}
-
-/* Delete Button (Initially hidden) */
-.delete-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.2s ease;
-}
-
-/* Show the delete button only when the item is hovered */
-.item:hover .delete-btn {
     display: flex;
-    opacity: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers the image inside the grid item */
+    position: relative;
+    background: none;
+}
+
+.item img {
+    width: 100%; /* Ensure it fills the grid cell */
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover; /* Ensures uniform scaling */
+    display: block;
+}
+
+#uploadForm {
+    display: none; /* Default state */
+}
+
+#uploadForm.active {
+    display: block; /* When visible */
 }
